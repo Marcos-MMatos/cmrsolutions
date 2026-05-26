@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaArrowRight } from "react-icons/fa";
 import { WHATSAPP_URL, CONTACT } from "@/lib/constants";
@@ -15,11 +16,8 @@ export default function CTASection() {
         className="max-w-5xl mx-auto"
       >
         <div className="relative overflow-hidden rounded-3xl glass-strong p-10 md:p-16 text-center border border-accent-blue/30">
-          {/* Decorative glows */}
           <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-accent-blue/20 blur-3xl" />
           <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-accent-cyan/20 blur-3xl" />
-
-          {/* Grid pattern */}
           <div className="absolute inset-0 tech-grid opacity-30 pointer-events-none" />
 
           <div className="relative">
@@ -50,18 +48,15 @@ export default function CTASection() {
                 <span>Escribir por WhatsApp</span>
                 <FaArrowRight />
               </a>
-              <a
-                href={`tel:+${CONTACT.whatsappNumber}`}
-                className="btn-secondary"
-              >
-                <span className="font-mono">{CONTACT.whatsappDisplay}</span>
-              </a>
+              <Link href="/contacto" className="btn-secondary">
+                <span>Más formas de contacto</span>
+              </Link>
             </div>
 
             <div className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs text-slate-400 font-mono">
               <span>✓ Cotización sin compromiso</span>
               <span>✓ Asesoría gratuita</span>
-              <span>✓ Atendemos toda Colombia</span>
+              <span>✓ Atendemos toda Colombia · {CONTACT.whatsappDisplay}</span>
             </div>
           </div>
         </div>

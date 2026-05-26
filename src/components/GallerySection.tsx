@@ -1,12 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { FaArrowRight } from "react-icons/fa";
 import ProjectCard from "./ProjectCard";
 import { PROJECTS } from "@/lib/constants";
 
 const SIZE_PATTERN = ["wide", "small", "small", "small", "small", "wide"] as const;
 
 export default function GallerySection() {
+  // Home only shows first 6
+  const projectsToShow = PROJECTS.slice(0, 6);
+
   return (
     <section id="proyectos" className="section">
       <div className="max-w-7xl mx-auto">
@@ -31,7 +36,7 @@ export default function GallerySection() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {PROJECTS.map((project, index) => (
+          {projectsToShow.map((project, index) => (
             <motion.div
               key={project.title}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -50,9 +55,18 @@ export default function GallerySection() {
           ))}
         </div>
 
-        <p className="text-center text-xs font-mono text-slate-500 mt-8">
-          Las imágenes son ilustrativas — solicita ver casos reales por WhatsApp.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mt-12"
+        >
+          <Link href="/proyectos" className="btn-secondary">
+            <span>Ver galería completa</span>
+            <FaArrowRight />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

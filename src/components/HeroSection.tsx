@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaWhatsapp, FaArrowRight, FaShieldAlt } from "react-icons/fa";
 import Logo from "./Logo";
@@ -16,9 +17,11 @@ export default function HeroSection() {
       id="inicio"
       className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 overflow-hidden"
     >
-      {/* Decorative glow rings */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-accent-blue/10 animate-spin-slow" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full border border-accent-cyan/10 animate-spin-slow" style={{ animationDirection: "reverse" }} />
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full border border-accent-cyan/10 animate-spin-slow"
+        style={{ animationDirection: "reverse" }}
+      />
 
       <motion.div
         initial="hidden"
@@ -26,7 +29,6 @@ export default function HeroSection() {
         transition={{ staggerChildren: 0.15, delayChildren: 0.2 }}
         className="relative z-10 max-w-5xl w-full text-center"
       >
-        {/* Logo */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.6 }}
@@ -40,7 +42,6 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Tagline badge */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.6 }}
@@ -52,7 +53,6 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
-        {/* H1 */}
         <motion.h1
           variants={fadeUp}
           transition={{ duration: 0.7 }}
@@ -63,7 +63,6 @@ export default function HeroSection() {
           <span className="text-white">en Seguridad & IT</span>
         </motion.h1>
 
-        {/* Subtitle */}
         <motion.p
           variants={fadeUp}
           transition={{ duration: 0.7 }}
@@ -74,7 +73,6 @@ export default function HeroSection() {
           desde Santa Marta para toda Colombia.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.7 }}
@@ -89,13 +87,12 @@ export default function HeroSection() {
             <FaWhatsapp className="text-xl" />
             <span>Contáctanos por WhatsApp</span>
           </a>
-          <a href="#servicios" className="btn-secondary">
+          <Link href="/servicios" className="btn-secondary">
             <span>Ver Servicios</span>
             <FaArrowRight />
-          </a>
+          </Link>
         </motion.div>
 
-        {/* Trust strip */}
         <motion.div
           variants={fadeUp}
           transition={{ duration: 0.7 }}
@@ -121,7 +118,6 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

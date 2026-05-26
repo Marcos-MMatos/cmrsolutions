@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -5,18 +6,23 @@ import {
   FaEnvelope,
 } from "react-icons/fa";
 import Logo from "./Logo";
-import { SITE, CONTACT, WHATSAPP_URL, NAV_LINKS } from "@/lib/constants";
+import {
+  SITE,
+  CONTACT,
+  WHATSAPP_URL,
+  NAV_LINKS,
+  SERVICES,
+} from "@/lib/constants";
 
 export default function Footer() {
   return (
     <footer className="relative border-t border-accent-blue/15 mt-10">
       <div className="max-w-7xl mx-auto px-6 py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-1">
             <Logo size={40} />
-            <p className="text-slate-400 text-sm mt-4 max-w-md leading-relaxed">
-              {SITE.tagline}. Empresa especializada en seguridad electrónica e
+            <p className="text-slate-400 text-sm mt-4 leading-relaxed">
+              {SITE.tagline}. Especialistas en seguridad electrónica e
               infraestructura IT en {SITE.location}.
             </p>
             <div className="flex gap-3 mt-6">
@@ -48,7 +54,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Links */}
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
               Navegación
@@ -56,18 +61,43 @@ export default function Footer() {
             <ul className="space-y-2">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-slate-400 text-sm hover:text-accent-cyan transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+              Servicios
+            </h4>
+            <ul className="space-y-2">
+              {SERVICES.slice(0, 5).map((s) => (
+                <li key={s.slug}>
+                  <Link
+                    href={`/servicios/${s.slug}`}
+                    className="text-slate-400 text-sm hover:text-accent-cyan transition-colors"
+                  >
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  href="/servicios"
+                  className="text-accent-cyan text-sm font-semibold hover:text-white transition-colors"
+                >
+                  Ver todos →
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
               Contacto
@@ -112,7 +142,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom strip */}
         <div className="mt-12 pt-6 border-t border-accent-blue/10 flex flex-col md:flex-row gap-4 justify-between items-center text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} {SITE.name} · Todos los derechos
